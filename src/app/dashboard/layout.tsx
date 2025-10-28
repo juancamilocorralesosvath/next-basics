@@ -1,0 +1,20 @@
+import { Sidebar } from '../components/Sidebar';
+
+export default function DashboardLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+  return (
+    <div className="bg-slate-400 overflow-y-scroll w-screen h-screen text-slate-300 selection:bg-blue-600 selection:text-white">
+        <div className="flex">
+            <div className="p-2 w-full text-slate-900">
+                <Sidebar />
+                {children}
+            </div>
+            
+        </div>
+     
+    </div>
+  );
+}
