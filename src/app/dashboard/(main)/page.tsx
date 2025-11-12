@@ -11,14 +11,14 @@ export default function MainPage() {
 
   // redux
   const dispatch = useDispatch<AppDispatch>()
-  const studentsSelector = useAppSelector(state=> state.student.data)
+  const studentsSelector:Students[] = useAppSelector(state=> state.student.data)
 
   useEffect(()=> {
     dispatch(getStudentAction())
   }, [])
 
 
-  useEffect(() => {
+ /*  useEffect(() => {
     const fetchStudents: any = async () => {
       try {
         const data = await studentService.getAll()
@@ -29,7 +29,7 @@ export default function MainPage() {
     }
     fetchStudents()
     console.log("🚀 ~ MainPage ~ fetchStudents:", fetchStudents)
-  }, [])
+  }, []) */
   return (
     <div>
       <div className="flex items-center justify-center min-h-screen">
@@ -56,7 +56,8 @@ export default function MainPage() {
               <tbody>
 
                 {
-                  students ? students.map(student => (
+                  // students ? students.map(student => (
+                  studentsSelector ? studentsSelector.map(student => (
                     <tr className="bg-gray-300 text-black" key={student.id}>
                       <td className="p-3 ">
 
