@@ -1,4 +1,5 @@
 'use client'
+import { useStudentStore } from "@/app/_store/student/store/student.store";
 import { Students } from "@/app/interfaces/students-response.interface";
 import studentService from "@/app/services/student/student.service";
 import { AppDispatch, useAppSelector } from "@/app/store";
@@ -7,12 +8,19 @@ import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 
 export default function MainPage() {
-  const [students, setStudents] = useState<Students[]>([])
+  //const [students, setStudents] = useState<Students[]>([])
 
   // redux
   const dispatch = useDispatch<AppDispatch>()
   const studentsSelector:Students[] = useAppSelector(state=> state.student.data)
 
+  // zustand
+  const {students, getStudents} = useStudentStore()
+  
+  useEffect(()=>{
+    getStudents(10, 1)
+  }, [getStudents])
+  
   useEffect(()=> {
     dispatch(getStudentAction())
   }, [])
@@ -57,7 +65,9 @@ export default function MainPage() {
 
                 {
                   // students ? students.map(student => (
-                  studentsSelector ? studentsSelector.map(student => (
+                  // redux studentsSelector ? studentsSelector.map(student => (
+                  // zustand
+                  students ? students.map(student => (
                     <tr className="bg-gray-300 text-black" key={student.id}>
                       <td className="p-3 ">
 
