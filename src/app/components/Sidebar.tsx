@@ -1,4 +1,20 @@
 import React from 'react'
+import { IoBrowsersOutline, IoCalculatorOutline, IoTrendingUpOutline } from 'react-icons/io5'
+
+const menuItems = [
+    {
+    path: "/dashboard",
+    icon: <IoTrendingUpOutline />,
+    title: "Dashboard",
+    subtitle: "students dashboard"
+},
+{
+      path: "/dashboard/counter",
+    icon: <IoCalculatorOutline />,
+    title: "counter",
+    subtitle: "counter calculator"  
+}
+]
 
 export const Sidebar = () => {
   return (
@@ -24,6 +40,11 @@ export const Sidebar = () => {
                 </span>
 
             </a>
+        </div>
+        <div className='w-full px-6 '>
+           {
+            menuItems.map(item => )
+           }
         </div>
 
     </div>
